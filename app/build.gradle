@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.getui.demo"
+        minSdkVersion 10
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        manifestPlaceholders = [
+                GETUI_APP_ID : "Hz9yY71xVJ7AdvjbojAVC2",
+                GETUI_APP_KEY : "Tbmsi0nkwg5BrUQygvyav5",
+                GETUI_APP_SECRET : "XT4kRRAfC884ISqnNVS432"
+        ]
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86_64"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.getui:sdk-for-google-play:2.10.3.5'
+    compile 'com.android.support:support-v4:23.0.0'
+}
